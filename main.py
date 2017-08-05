@@ -6,20 +6,7 @@ import constants
 from telebot import types
 
 bot = telebot.TeleBot(constants.token)
-print(bot.get_me())
-a= 42
-b= 'qwerty'
-print(type(a), type(b))
 
-def log(message, answer):
-    print("\n --------")
-    from datetime import datetime
-    print(datetime.now())
-    print("Сообщение от {0} {1}. (id = {2}) \n Текст - {3}".format(message.from_user.first_name,
-                                                                   message.from_user.last_name,
-                                                                   str(message.from_user.id),
-                                                                   message.text))
-    print(answer)
 
 
 def site(url):

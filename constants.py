@@ -1,4 +1,4 @@
-token = "341519589:AAGuXeg4cqEVXPK3O0u9BIIudnA3iuGhz4c"
+token = "341519589:AAGsM9G8_0UHiMxRF2uUhXdootK8m086Yqo"
 
 krg = '50'
 len = '25'
