@@ -41,4 +41,4 @@ def main():
     parse(site('http://www.kino.kz/cinema.asp?cinemaid='+constants.krg))
 if __name__ == '__main__':
     main()
-bot.polling(none_stop=True, interval=0)
+bot.polling(none_stop=True, interval=10)
