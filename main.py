@@ -5,7 +5,7 @@ import time
 import constants
 
 
-from telebot import types
+
 
 bot = telebot.TeleBot(constants.token)
 def parse(html):
