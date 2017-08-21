@@ -21,22 +21,23 @@ def parse(html):
 
 
         if message.text == "Фильм":
-            lines = []
-
-
-            soup = BeautifulSoup(html, 'html.parser')
-            for s in soup.find_all('div', class_='detail_content'):
-                for k in s.find_all('tr'):
-                    for b in k.find_all('strong'):
-                        z = b.text
-
-                        I = '🔴🎥|'
-                        lines.append(I + z + '|' + '\n' + 'Время сеанса:' + '\n' + '------------------' + '\n')
-                    for h in k.find_all('tr', class_='seance_active'):
-                        for p in h.findAll('td')[-10:1]:
-                            a = p.text[11:-5]
-                            lines.append('⏰' + a + '\n' + '------------------' + '\n')
-            bot.send_message(message.chat.id, ''.join(lines))
+            bot.send_message(message.chat.id, 'sadasd')
+            # lines = []
+            #
+            #
+            # soup = BeautifulSoup(html, 'html.parser')
+            # for s in soup.find_all('div', class_='detail_content'):
+            #     for k in s.find_all('tr'):
+            #         for b in k.find_all('strong'):
+            #             z = b.text
+            #
+            #             I = '🔴🎥|'
+            #             lines.append(I + z + '|' + '\n' + 'Время сеанса:' + '\n' + '------------------' + '\n')
+            #         for h in k.find_all('tr', class_='seance_active'):
+            #             for p in h.findAll('td')[-10:1]:
+            #                 a = p.text[11:-5]
+            #                 lines.append('⏰' + a + '\n' + '------------------' + '\n')
+            # bot.send_message(message.chat.id, ''.join(lines))
 
 
 def site(url):
@@ -57,18 +58,3 @@ if __name__ == '__main__':
 
 bot.polling(none_stop=True)
 
-# if message.text == "Фильм":
-#     lines = []
-#     soup = BeautifulSoup(html, 'html.parser')
-#     for s in soup.find_all('div', class_='detail_content'):
-#         for k in s.find_all('tr'):
-#             for b in k.find_all('strong'):
-#                 z = b.text
-#
-#                 I = '🔴🎥|'
-#                 lines.append(I + z + '|' + '\n' + 'Время сеанса:' + '\n' + '------------------' + '\n')
-#             for h in k.find_all('tr', class_='seance_active'):
-#                 for p in h.findAll('td')[-10:1]:
-#                     a = p.text[11:-5]
-#                     lines.append('⏰' + a + '\n' + '------------------' + '\n')
-#     bot.send_message(message.chat.id, ''.join(lines))
