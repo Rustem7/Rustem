@@ -7,7 +7,7 @@ import constants
 
 import requests
 from telegram.ext import CommandHandler, Updater
-bo = telebot.TeleBot(token)
+bo = telebot.TeleBot(constants.token)
 
 class Bot:
     def __init__(self, token, debug=False):
