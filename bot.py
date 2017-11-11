@@ -49,7 +49,7 @@ class Bot:
     def handle_start(m):
         markup = types.ReplyKeyboardMarkup()
         markup.row('Фильм')
-        bot.send_message(m.chat.id, 'Привет',reply_markup=markup)
+        self._token.send_message(m.chat.id, 'Привет',reply_markup=markup)
        
     
     
