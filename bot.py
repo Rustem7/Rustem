@@ -44,6 +44,12 @@ class Bot:
         text = "Current Bitcoin rate - ${}".format(rate)
         bot.send_message(chat_id=message.chat_id, text=text)
         
+        
+    @bot.message_handler(commands=['start', 'help'])
+    def handle_start(m):
+        markup = types.ReplyKeyboardMarkup()
+        markup.row('Фильм')
+        bot.send_message(m.chat.id, 'Привет',reply_markup=markup)
        
     
     
