@@ -4,7 +4,7 @@ import telebot
 import time
 import constants
 
-bot = telebot.TeleBot(constants.token)
+bot = telebot.TeleBot("341519589:AAGsM9G8_0UHiMxRF2uUhXdootK8m086Yqo")
 def parse(html):
 
     @bot.message_handler(commands=['start', 'help'])
@@ -37,7 +37,7 @@ def site(url):
     return coll.read()
 
 def main():
-    parse(site('http://www.kino.kz/cinema.asp?cinemaid='+constants.krg))
+    parse(site('http://www.kino.kz/cinema.asp?cinemaid=50'))
 if __name__ == '__main__':
     main()
 
