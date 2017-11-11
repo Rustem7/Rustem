@@ -55,9 +55,8 @@ class Bot:
         message = update.message
         coll = urllib.request.urlopen('http://www.kino.kz/cinema.asp?cinemaid=50')
         html= coll.read()
-        print(coll)
-
-
+        bot.send_message(message.chat.id, html)
+        
         lines = []
         soup = BeautifulSoup(html, 'html.parser')
         for s in soup.find_all('div', class_='detail_content'):
