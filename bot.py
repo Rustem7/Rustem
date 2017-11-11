@@ -51,10 +51,10 @@ class Bot:
         bot.send_message(chat_id=message.chat_id, text=text)
         
     @staticmethod   
-    def handle_start(m):
+    def handle_start(bot, update):
         markup = types.ReplyKeyboardMarkup()
         markup.row('/Фильм')
-        bot.send_message(m.chat.id, 'Привет',reply_markup=markup)
+        bot.send_message(chat.id, 'Привет',reply_markup=markup)
         text="6526516ddd51"
         bot.send_message(chat_id=message.chat_id, text=text)
         
