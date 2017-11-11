@@ -10,7 +10,7 @@ PORT = int(os.environ.get('PORT', '5000'))
 def handle_text(message):
     if message.text == "Фильм":
    
-        bot.send_message(message.chat.id, '66')
+        TOKEN.send_message(message.chat.id, '66')
 
 updater = Updater(TOKEN)
 
