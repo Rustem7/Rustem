@@ -49,7 +49,9 @@ class Bot:
     @bo.message_handler(content_types=['text'])
     def handle_text(message):
         if message.text == "Фильм":
-            print('516165')
+            text="652651651"
+            bot.send_message(chat_id=message.chat_id, text=text)
+          
             
        
     
