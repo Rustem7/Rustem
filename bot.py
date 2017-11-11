@@ -7,14 +7,14 @@ import constants
 
 import requests
 from telegram.ext import CommandHandler, Updater
-
+bo = telebot.TeleBot(token)
 
 class Bot:
     def __init__(self, token, debug=False):
         self._token = token
         self._updater = Updater(token)
         self._debug = debug
-        bo = telebot.TeleBot(token)
+        
         
         self._init_handlers()
     
