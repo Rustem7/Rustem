@@ -10,7 +10,6 @@ from telegram.ext import CommandHandler, Updater
 
 
 class Bot:
-    parse(site('http://www.kino.kz/cinema.asp?cinemaid='+constants.krg))
     def __init__(self, token, debug=False):
         self._token = token
         self._updater = Updater(token)
@@ -30,8 +29,14 @@ class Bot:
         self._updater.dispatcher.add_handler(CommandHandler('rate', self._check_rate))
     
     @staticmethod
+    def main():
+        
+        parse(site('http://www.kino.kz/cinema.asp?cinemaid='+constants.krg))
+    if __name__ == '__main__':
+    main()
+        
     
-    def _check_rate(bot, update):
+    def _check_rate(bot, update):parse(site('http://www.kino.kz/cinema.asp?cinemaid='+constants.krg))
         message = update.message
         
         url = "https://api.coindesk.com/v1/bpi/currentprice.json"
