@@ -70,10 +70,11 @@ class Bot:
                     for p in h.findAll('td')[-10:1]:
                         a = p.text[11:-5]
                         lines.append('⏰' + a + '\n' + '------------------' + '\n')
+                  
                         
         
-
-      #  bot.send_message(chat_id=message.chat_id, ''.join(lines))
+         text = ''.join(lines)   
+         bot.send_message(chat_id=message.chat_id, text=text)
         
     
        
