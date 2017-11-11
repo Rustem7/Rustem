@@ -37,7 +37,7 @@ class Bot:
         message = update.message
         text="652651651"
         bot.send_message(chat_id=message.chat_id, text=text)
-          
+    @staticmethod     
     
     def _check_rate(bot, update):
         message = update.message
