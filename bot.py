@@ -7,7 +7,7 @@ import constants
 
 import requests
 from telegram.ext import CommandHandler, Updater
-bo = telebot.TeleBot(constants.token)
+
 
 class Bot:
     def __init__(self, token, debug=False):
@@ -28,6 +28,7 @@ class Bot:
     
     def _init_handlers(self):
         self._updater.dispatcher.add_handler(CommandHandler('rate', self._check_rate))
+        self._updater.dispatcher.add_handler(CommandHandler('Фильм', self.Handle.text))
     
     @staticmethod
      
@@ -46,11 +47,11 @@ class Bot:
         bot.send_message(chat_id=message.chat_id, text=text)
         
         
-    @bo.message_handler(content_types=['text'])
+    
     def handle_text(message):
-        if message.text == "Фильм":
-            text="652651651"
-            bot.send_message(chat_id=message.chat_id, text=text)
+        message = update.message
+        "652651651"
+        bot.send_message(chat_id=message.chat_id, text=text)
           
             
        
