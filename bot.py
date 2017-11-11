@@ -55,7 +55,23 @@ class Bot:
         message = update.message
         coll = urllib.request.urlopen('http://www.kino.kz/cinema.asp?cinemaid=50')
         html= coll.read()
-        bot.send_message(chat_id=message.chat_id, text='445345345354')
+
+        lines = []
+        soup = BeautifulSoup(html, 'html.parser')
+        for s in soup.find_all('div', class_='detail_content'):
+            for k in s.find_all('tr'):
+                for b in k.find_all('strong'):
+                    z = b.text
+                    I = '🔴🎥|'
+                    lines.append(I + z + '|' + '\n' + 'Время сеанса:' + '\n' + '------------------' + '\n')
+                for h in k.find_all('tr', class_='seance_active'):
+
+                    for p in h.findAll('td')[-10:1]:
+                        a = p.text[11:-5]
+                        lines.append('⏰' + a + '\n' + '------------------' + '\n')
+        
+
+        bot.send_message(chat_id=message.chat_id, ''.join(lines))
         
     
        
