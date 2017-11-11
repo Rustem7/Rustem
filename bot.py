@@ -14,6 +14,7 @@ class Bot:
         self._token = token
         self._updater = Updater(token)
         self._debug = debug
+        bo = telebot.TeleBot(token)
         
         self._init_handlers()
     
@@ -45,11 +46,11 @@ class Bot:
         bot.send_message(chat_id=message.chat_id, text=text)
         
         
-    @self._token.message_handler(commands=['start', 'help'])
+    @bo.message_handler(commands=['start', 'help'])
     def handle_start(m):
         markup = types.ReplyKeyboardMarkup()
         markup.row('Фильм')
-        self._token.send_message(m.chat.id, 'Привет',reply_markup=markup)
+        bot.send_message(m.chat.id, 'Привет',reply_markup=markup)
        
     
     
