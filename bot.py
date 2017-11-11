@@ -55,7 +55,7 @@ class Bot:
         message = update.message
         coll = urllib.request.urlopen('http://www.kino.kz/cinema.asp?cinemaid=50')
         html= coll.read()
-        bot.send_message(chat_id=message.chat_id, '5445')
+        bot.send_message(chat_id=message.chat_id, text=html)
         
     
        
