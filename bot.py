@@ -29,7 +29,7 @@ class Bot:
     def _init_handlers(self):
         self._updater.dispatcher.add_handler(CommandHandler('rate', self._check_rate))
         self._updater.dispatcher.add_handler(CommandHandler('film', self.handle_text))
-    
+        self._updater.dispatcher.add_handler(CommandHandler('start','help' self. handle_start))
     @staticmethod
      
        
@@ -48,6 +48,14 @@ class Bot:
         rate = response.json()['bpi']['USD']['rate_float']
         
         text = "Current Bitcoin rate - ${}".format(rate)
+        bot.send_message(chat_id=message.chat_id, text=text)
+        
+         @staticmethod   
+    def handle_start(m):
+        markup = types.ReplyKeyboardMarkup()
+        markup.row('/Фильм')
+        bot.send_message(m.chat.id, 'Привет',reply_markup=markup)
+        text="6526516ddd51"
         bot.send_message(chat_id=message.chat_id, text=text)
         
         
