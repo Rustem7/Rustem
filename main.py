@@ -3,6 +3,10 @@ from bs4 import BeautifulSoup
 import telebot
 import time
 import constants
+import os
+from flask import Flask, request
+
+server = Flask(__name__)
 
 bot = telebot.TeleBot(constants.token)
 def parse(html):
@@ -40,5 +44,12 @@ def main():
     parse(site('http://www.kino.kz/cinema.asp?cinemaid='+constants.krg))
 if __name__ == '__main__':
     main()
+    
+@server.route("/")
+def webhook():
+    bot.remove_webhook()
+    bot.set_webhook(url="https://git.heroku.com/polar-inlet-33421.git")
+    return "!", 200
 
-bot.polling(none_stop=True)
+server.run(host="0.0.0.0", port=os.environ.get('PORT', 5000))
+server = Flask(__name__)
