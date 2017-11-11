@@ -6,7 +6,7 @@ TOKEN = os.environ.get('TOKEN', '341519589:AAGsM9G8_0UHiMxRF2uUhXdootK8m086Yqo')
 PORT = int(os.environ.get('PORT', '5000'))
 
 
-@bot.message_handler(content_types=['text'])
+@TOKEN.message_handler(content_types=['text'])
 def handle_text(message):
     if message.text == "Фильм":
    
