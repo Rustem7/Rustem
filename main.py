@@ -4,9 +4,11 @@ import telebot
 import time
 import constants
 import os
-from flask import Flask, request
 
-server = Flask(__name__)
+
+TOKEN = constants.token
+PORT = int(os.environ.get('PORT', '5000'))
+updater = Updater(constants.token)
 
 bot = telebot.TeleBot(constants.token)
 def parse(html):
@@ -44,12 +46,12 @@ def main():
     parse(site('http://www.kino.kz/cinema.asp?cinemaid='+constants.krg))
 if __name__ == '__main__':
     main()
-    
-@server.route("/")
-def webhook():
-    bot.remove_webhook()
-    bot.set_webhook(url="https://git.heroku.com/polar-inlet-33421.git")
-    return "!", 200
+    updater.start_webhook(listen="0.0.0.0",
+                      port=PORT,
+                      url_path=TOKEN)
+    updater.bot.set_webhook("https://polar-inlet-33421.herokuapp.com/" +constants.token)
 
-server.run(host="0.0.0.0", port=os.environ.get('PORT', 5000))
-server = Flask(__name__)
+    
+    updater.idle()
+    
+
