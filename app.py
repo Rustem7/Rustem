@@ -3,7 +3,7 @@ import telegram
 from telegram.ext import *
 from telegram import *
 
-TOKEN = os.environ['constans.token']
+TOKEN = os.environ[constans.token]
 PORT = int(os.environ['8080'])
 
 bot = telegram.Bot(TOKEN)
