@@ -1,37 +1,57 @@
-import constants
 import os
-import telebot
-from flask import Flask, request
+import telegram
+from telegram.ext import *
+from telegram import *
 
-server = Flask(__name__)
-TOKEN  = 'constants.token'
+TOKEN = os.environ['341519589:AAGsM9G8_0UHiMxRF2uUhXdootK8m086Yqo']
+PORT = int(os.environ['8080'])
 
-bot = telebot.TeleBot(constants.token)
+bot = telegram.Bot(TOKEN)
 
-port = int(os.environ.get("PORT", 5000))
+def build_menu(buttons,
+               n_cols,
+               header_buttons=None,
+               footer_buttons=None):
+    menu = [buttons[i:i + n_cols] for i in range(0, len(buttons), n_cols)]
+    if header_buttons:
+        menu.insert(0, header_buttons)
+    if footer_buttons:
+        menu.append(footer_buttons)
+    return menu
 
-@server.route('/')
-def webhook():
-    bot.remove_webhook()
-    bot.set_webhook(url="https://polar-inlet-33421.herokuapp.com/") #ссылку изменил
-    return "!", 200
+def start(bot, update):
+    #update.message.reply_text("hello world")
+    #bot.send_message(text="ciao mondo", chat_id = update.message.chat_id)
+    button_list = [
+                   InlineKeyboardButton("start", callback_data='start'),
+                   InlineKeyboardButton("stop", callback_data='stop'),
+    ]
+    reply_markup = InlineKeyboardMarkup(build_menu(button_list, n_cols=2))
+    bot.send_message(chat_id = update.message.chat_id , text="Benvenuto nuovo utente. Premi start per avviare il conteggio del tempo, mentre premi stop per fermarlo", reply_markup=reply_markup)
 
-@server.route("/bot", methods=['POST'])
-def getMessage():
-    bot.process_new_messages(
-        [telebot.types.Update.de_json(request.stream.read().decode("utf-8")).message])
+def hello(bot, update):
+    update.message.reply_text(
+        'Hello {}'.format(update.message.from_user.first_name))
+
+def call(bot, update):
+    update.message.reply_text(
+        'Hello {}'.format(update.message.text))
     
-    
-@server.route("/bot", methods=['POST'])
-def getMessage():
-    bot.process_new_messages(
-        [telebot.types.Update.de_json(request.stream.read().decode("utf-8")).message])
-    return "!", 200
+def answerInlineQuery(bot,update):
+  print(query)
+  print(user_data)
 
-@bot.message_handler()
-def start(message):
-    bot.send_message(message.chat.id, 'Hi') #вот эта часть кода исполняется два или три раза
 
-server.run(host='0.0.0.0', port=port)    
-    
-    
+updater = Updater(TOKEN)
+
+updater.bot.set_webhook("https://polar-inlet-33421.herokuapp.com/" + TOKEN)
+updater.start_webhook(listen="0.0.0.0",
+                      port=PORT,
+                      url_path=TOKEN)
+  
+updater.dispatcher.add_handler(CommandHandler('start', start))
+updater.dispatcher.add_handler(CommandHandler('hello', hello))
+updater.dispatcher.add_handler( InlineQueryHandler(callback = answerInlineQuery, pass_user_data = True ) )
+updater.dispatcher.add_handler(MessageHandler(Filters.text, callback=call))
+
+updater.idle()
