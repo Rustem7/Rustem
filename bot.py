@@ -28,12 +28,16 @@ class Bot:
     
     def _init_handlers(self):
         self._updater.dispatcher.add_handler(CommandHandler('rate', self._check_rate))
-        self._updater.dispatcher.add_handler(CommandHandler('Фильм', self.handle_text))
+        self._updater.dispatcher.add_handler(CommandHandler('film', self.handle_text))
     
     @staticmethod
      
        
-        
+    def handle_text(bot, update):
+        message = update.message
+        text="652651651"
+        bot.send_message(chat_id=message.chat_id, text=text)
+          
     
     def _check_rate(bot, update):
         message = update.message
@@ -48,11 +52,7 @@ class Bot:
         
         
     
-    def handle_text(bot, update):
-        message = update.message
-        text="652651651"
-        bot.send_message(chat_id=message.chat_id, text=text)
-          
+    
             
        
     
