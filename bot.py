@@ -45,7 +45,7 @@ class Bot:
         bot.send_message(chat_id=message.chat_id, text=text)
         
         
-    @bot.message_handler(commands=['start', 'help'])
+    @self._token.message_handler(commands=['start', 'help'])
     def handle_start(m):
         markup = types.ReplyKeyboardMarkup()
         markup.row('Фильм')
