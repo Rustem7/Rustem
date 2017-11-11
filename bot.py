@@ -50,7 +50,7 @@ class Bot:
         text = "Current Bitcoin rate - ${}".format(rate)
         bot.send_message(chat_id=message.chat_id, text=text)
         
-         @staticmethod   
+    @staticmethod   
     def handle_start(m):
         markup = types.ReplyKeyboardMarkup()
         markup.row('/Фильм')
