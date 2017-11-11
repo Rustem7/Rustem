@@ -28,7 +28,7 @@ class Bot:
     
     def _init_handlers(self):
         self._updater.dispatcher.add_handler(CommandHandler('rate', self._check_rate))
-        self._updater.dispatcher.add_handler(CommandHandler('Фильм', self.handle.text))
+        self._updater.dispatcher.add_handler(CommandHandler('Фильм', self.handle_text))
     
     @staticmethod
      
