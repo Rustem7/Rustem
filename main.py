@@ -5,11 +5,6 @@ import time
 import constants
 import os
 
-
-TOKEN = "341519589:AAGsM9G8_0UHiMxRF2uUhXdootK8m086Yqo"
-PORT = int(os.environ.get('PORT', '5000'))
-update = Update(TOKEN)
-
 bot = telebot.TeleBot(constants.token)
 def parse(html):
 
@@ -46,12 +41,5 @@ def main():
     parse(site('http://www.kino.kz/cinema.asp?cinemaid='+constants.krg))
 if __name__ == '__main__':
     main()
-    update.start_webhook(listen="0.0.0.0",
-                      port=PORT,
-                      url_path=TOKEN)
-    update.bot.set_webhook("https://polar-inlet-33421.herokuapp.com/" +TOKEN)
 
-    
-    update.idle()
-    
-
+bot.polling(none_stop=True)
