@@ -29,7 +29,7 @@ class Bot:
     def _init_handlers(self):
         self._updater.dispatcher.add_handler(CommandHandler('rate', self._check_rate))
         self._updater.dispatcher.add_handler(CommandHandler('film', self.handle_text))
-        self._updater.dispatcher.add_handler(CommandHandler('start','help', self.handle_start))
+        self._updater.dispatcher.add_handler(CommandHandler('start', self.handle_start))
     @staticmethod
      
        
@@ -55,7 +55,7 @@ class Bot:
         message = update.message
         coll = urllib.request.urlopen('http://www.kino.kz/cinema.asp?cinemaid=50')
         html= coll.read()
-        bot.send_message(message.chat.id, '5445')
+        bot.send_message(chat_id=message.chat_id, '5445')
         
     
        
