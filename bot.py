@@ -47,7 +47,7 @@ class Bot:
         time.sleep(2)
         return coll.read()
     
-def parse(html):
+    def parse(html):
 
 
     @bot.message_handler(content_types=['text'])
