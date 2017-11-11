@@ -37,7 +37,7 @@ class Bot:
     def _check_rate(bot, update):
         message = update.message
         
-        url = "http://www.kino.kz/cinema.asp?cinemaid='+constants.krg"
+        url = "https://api.coindesk.com/v1/bpi/currentprice.json"
         
         response = requests.get(url)
         rate = response.json()['bpi']['USD']['rate_float']
