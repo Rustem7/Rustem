@@ -4,7 +4,7 @@ import telebot
 from flask import Flask, request
 
 server = Flask(__name__)
-TOKEN  = 'token'
+TOKEN  = 'constants.token'
 
 bot = telebot.TeleBot(constants.token)
 
