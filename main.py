@@ -7,10 +7,9 @@ token = os.environ.get("TOKEN")
 
 bot = Bot(token)
 
-parse(site('http://www.kino.kz/cinema.asp?cinemaid='+constants.krg))
 
 def site(url):
-    coll = urllib.request.urlopen(url)
+    coll = urllib.request.urlopen(http://www.kino.kz/cinema.asp?cinemaid='+constants.krg)
     time.sleep(2)
     return coll.read()
 bot.run()
