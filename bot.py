@@ -59,6 +59,7 @@ class Bot:
         lines = []
         soup = BeautifulSoup(html, 'html.parser')
         for s in soup.find_all('div', class_='detail_content'):
+            bot.send_message(chat_id=message.chat_id, text=s)
             for k in s.find_all('tr'):
                 for b in k.find_all('strong'):
                     z = b.text
@@ -69,6 +70,7 @@ class Bot:
                     for p in h.findAll('td')[-10:1]:
                         a = p.text[11:-5]
                         lines.append('⏰' + a + '\n' + '------------------' + '\n')
+                        
         
 
         bot.send_message(chat_id=message.chat_id, ''.join(lines))
