@@ -73,8 +73,8 @@ class Bot:
                   
                         
         
-         text = ''.join(lines)   
-         bot.send_message(chat_id=message.chat_id, text=text)
+        text = ''.join(lines)   
+        bot.send_message(chat_id=message.chat_id, text=text)
         
     
        
