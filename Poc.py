@@ -1,16 +1,16 @@
-
+import constants
 import os
 import telebot
 
 TOKEN = os.environ.get('TOKEN', '341519589:AAGsM9G8_0UHiMxRF2uUhXdootK8m086Yqo')
 PORT = int(os.environ.get('PORT', '5000'))
+bot = telebot.TeleBot(constants.token)
 
-
-@TOKEN.message_handler(content_types=['text'])
+@bot.message_handler(content_types=['text'])
 def handle_text(message):
     if message.text == "Фильм":
    
-        TOKEN.send_message(message.chat.id, '66')
+        bot.send_message(message.chat.id, '66')
 
 updater = Updater(TOKEN)
 
