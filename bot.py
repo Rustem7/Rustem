@@ -50,7 +50,7 @@ class Bot:
     
     def handle_text(bot, update):
         message = update.message
-        "652651651"
+        text="652651651"
         bot.send_message(chat_id=message.chat_id, text=text)
           
             
