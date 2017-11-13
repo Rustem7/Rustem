@@ -9,7 +9,7 @@ import constants
 
 
 server = Flask(__name__)
-token = "341519589:AAGsM9G8_0UHiMxRF2uUhXdootK8m086Yqo"
+token = os.environ.get(TOKEN)
 bot = telebot.TeleBot(token) 
 port = int(os.environ.get("PORT", 5000))
 
@@ -38,7 +38,6 @@ def parse(html):
     def handle_text(message):
 
         if message.text == "Фильм":
-            bot.send_message(message.chat.id, 'dss')
             lines = []
             soup = BeautifulSoup(html, 'html.parser')
             for s in soup.find_all('div', class_='detail_content'):
@@ -59,9 +58,7 @@ def site(url):
     time.sleep(2)
     return coll.read()
 
-
-    
-    
+   
    
 if __name__ == '__main__':
     parse(site('http://www.kino.kz/cinema.asp?cinemaid=50'))
