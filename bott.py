@@ -1,34 +1,45 @@
+import urllib.request
+from bs4 import BeautifulSoup
 import telebot
+import time
+import constants
 import os
-from flask import Flask, request
 
+bot = telebot.TeleBot(constants.token)
+def parse(html):
 
+    @bot.message_handler(commands=['start', 'help'])
+    def handle_start(m):
+        markup = types.ReplyKeyboardMarkup()
+        markup.row('Фильм')
+        bot.send_message(m.chat.id, 'Привет',reply_markup=markup)
 
+    @bot.message_handler(content_types=['text'])
+    def handle_text(message):
 
-bot = telebot.TeleBot('341519589:AAGsM9G8_0UHiMxRF2uUhXdootK8m086Yqo')
+        if message.text == "Фильм":
+            lines = []
+            soup = BeautifulSoup(html, 'html.parser')
+            for s in soup.find_all('div', class_='detail_content'):
+                for k in s.find_all('tr'):
+                    for b in k.find_all('strong'):
+                        z = b.text
+                        I = '🔴🎥|'
+                        lines.append(I + z + '|' + '\n' + 'Время сеанса:' + '\n' + '------------------' + '\n')
+                    for h in k.find_all('tr', class_='seance_active'):
+                        for p in h.findAll('td')[-10:1]:
+                            a = p.text[11:-5]
+                            lines.append('⏰' + a + '\n' + '------------------' + '\n')
+            bot.send_message(message.chat.id, ''.join(lines))
 
-server = Flask(__name__)
+def site(url):
+    coll = urllib.request.urlopen(url)
+    time.sleep(2)
+    return coll.read()
 
-@bot.message_handler(commands=['start'])
-def start(message):
-    bot.reply_to(message, 'Hello, ' + message.from_user.first_name)
+def main():
+    parse(site('http://www.kino.kz/cinema.asp?cinemaid='+constants.krg))
+if __name__ == '__main__':
+    main()
 
-@bot.message_handler(func=lambda message: True, content_types=['text'])
-def echo_message(message):
-    bot.reply_to(message, message.text)
-    text = '51515415'   
-    bot.send_message(message.chat_id,  text=text )
-
-@server.route("/bot", methods=['POST'])
-def getMessage():
-    bot.process_new_updates([telebot.types.Update.de_json(request.stream.read().decode("utf-8"))])
-    return "!", 200
-
-@server.route("/")
-def webhook():
-    bot.remove_webhook()
-    bot.set_webhook(url="https://polar-inlet-33421.herokuapp.com/")
-    return "!", 200
-
-server.run(host="0.0.0.0", port=os.environ.get('PORT', 5000))
-server = Flask(__name__)
+bot.polling(none_stop=True)
