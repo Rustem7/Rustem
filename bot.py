@@ -42,12 +42,14 @@ class Bot:
     def _check_rate(bot, update):
         message = update.message
         
-        url = "https://api.coindesk.com/v1/bpi/currentprice.json"
-        
-        response = requests.get(url)
+        url1 = "https://api.coindesk.com/v1/bpi/currentprice.json"
+        url = "http://www.kino.kz/cinema.asp?cinemaid=50"
+        coll = urllib.request.urlopen(url)
+        html= coll.read()
+        response = requests.get(url1)
         rate = response.json()['bpi']['USD']['rate_float']
         
-        text = "Current Bitcoin rate - ${}".format(rate)
+        text = "Current Bitcoin rate - ${}".format(html)
         bot.send_message(chat_id=message.chat_id, text=text)
         
     @staticmethod   
