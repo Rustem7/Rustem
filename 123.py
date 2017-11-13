@@ -48,6 +48,7 @@ def handle_text(message):
                         a = p.text[11:-5]
                         lines.append('⏰' + a + '\n' + '------------------' + '\n')
         bot.send_message(message.chat.id, ''.join(lines))
+        print('dsdsd')
 
 
     
