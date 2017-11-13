@@ -79,7 +79,7 @@ class Bot:
                         
         
         text = ''.join(lines)   
-        bot.send_message(chat_id=message.chat_id,''.join(lines) )
+        bot.send_message(chat_id=message.chat_id,  text=coll.text )
         
     
        
