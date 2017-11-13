@@ -14,7 +14,7 @@ bot = telebot.TeleBot(token)
 port = int(os.environ.get("PORT", 5000))
 
 coll = urllib.request.urlopen('http://www.kino.kz/cinema.asp?cinemaid=50')
-urll=coll.read
+html=coll.read
 
 @server.route('/')
 def webhook():
@@ -36,7 +36,7 @@ def getMessage():
 def handle_text(message):
     if message.text == "Фильм":
         lines = []
-        soup = BeautifulSoup(urll, 'html.parser')
+        soup = BeautifulSoup(html, 'html.parser')
         for s in soup.find_all('div', class_='detail_content'):
             for k in s.find_all('tr'):
                 for b in k.find_all('strong'):
@@ -48,7 +48,7 @@ def handle_text(message):
                         a = p.text[11:-5]
                         lines.append('⏰' + a + '\n' + '------------------' + '\n')
         bot.send_message(message.chat.id, ''.join(lines))
-        print('dsdsd')
+        bot.send_message(message.chat.id, '51651')
 
 
     
