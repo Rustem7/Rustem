@@ -38,7 +38,7 @@ def site(url):
     return coll.read()
 
 def main():
-    parse(site('http://www.kino.kz/cinema.asp?cinemaid='+constants.krg))
+    parse(site('http://www.kino.kz/cinema.asp?cinemaid=50'))
 if __name__ == '__main__':
     main()
 
