@@ -6,9 +6,9 @@ import constants
 import os
 
 
-
-bot = telebot.TeleBot(token)
 TOKEN = os.environ.get("TOKEN")
+bot = telebot.TeleBot(TOKEN)
+
 PORT = int(os.environ.get('PORT', '5000'))
 
 
