@@ -13,8 +13,7 @@ token = "341519589:AAGsM9G8_0UHiMxRF2uUhXdootK8m086Yqo"
 bot = telebot.TeleBot(token) 
 port = int(os.environ.get("PORT", 5000))
 
-coll = urllib.request.urlopen('http://www.kino.kz/cinema.asp?cinemaid=50')
-html=coll.read
+
 
 @server.route('/')
 def webhook():
@@ -34,8 +33,13 @@ def getMessage():
  #   bot.send_message(message.chat.id, 'Hi') #вот эта часть кода исполняется два или три раза
    
 def handle_text(message):
+      
+    
     if message.text == "Фильм":
         
+        coll = urllib.request.urlopen('http://www.kino.kz/cinema.asp?cinemaid=50')
+        html=coll.read
+        bot.send_message(message.chat.id, coll.text)
         lines = []
         soup = BeautifulSoup(html, 'html.parser')
         
