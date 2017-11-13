@@ -47,11 +47,18 @@ def site(url):
 
 def main():
     parse(site('http://www.kino.kz/cinema.asp?cinemaid=50'))
-if __name__ == '__main__':
-    main()
 
-    bot.start_webhook(listen="0.0.0.0",
-                          port=PORT,
-                          url_path=TOKEN)
-    bot.bot.set_webhook("https://polar-inlet-33421.herokuapp.com/" + TOKEN)
-    bot.idle()
+    
+    
+@server.route('/' + token, methods=['POST'])
+def get_message():
+    Bot.process_new_updates([telebot.types.Update.de_json(request.stream.read().decode("utf-8"))])
+    return "POST", 200
+
+@server.route("/")
+def web_hook():
+    Bot.remove_webhook()
+    Bot.set_webhook(url="https://polar-inlet-33421.herokuapp.com/" + token)
+    return "CONNECTED", 200
+
+server.run(host="0.0.0.0", port=PORT, debug=True)
