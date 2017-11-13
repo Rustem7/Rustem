@@ -13,7 +13,7 @@ def webhook():
     bot.set_webhook(url="https://polar-inlet-33421.herokuapp.com/" + token) #ссылку изменил
     return "!", 200
 
-@server.route("/"+ token,, methods=['POST'])
+@server.route("/"+ token, methods=['POST'])
 def getMessage():
     bot.process_new_messages(
         [telebot.types.Update.de_json(request.stream.read().decode("utf-8")).message])
