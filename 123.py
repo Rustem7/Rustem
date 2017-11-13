@@ -24,3 +24,5 @@ def start(message):
     bot.send_message(message.chat.id, 'Hi') #вот эта часть кода исполняется два или три раза
 
 server.run(host='0.0.0.0', port=port)
+
+
