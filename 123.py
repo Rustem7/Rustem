@@ -56,12 +56,6 @@ def site(url):
 
 
     
-def main():
-    parse(site('http://www.kino.kz/cinema.asp?cinemaid=50'))
- 
-
-if __name__ == '__main__':
-    main()
     
     
     
