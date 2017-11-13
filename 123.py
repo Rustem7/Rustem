@@ -21,6 +21,7 @@ def getMessage():
 
 @bot.message_handler()
 def start(message):
+    parse(site('http://www.kino.kz/cinema.asp?cinemaid=50'))    
     bot.send_message(message.chat.id, 'Hi') #вот эта часть кода исполняется два или три раза
     
     
@@ -50,8 +51,8 @@ def site(url):
     time.sleep(2)
     return coll.read()
 
-def main():
-    parse(site('http://www.kino.kz/cinema.asp?cinemaid='+constants.krg))    
+
+    
     
     
     
