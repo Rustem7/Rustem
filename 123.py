@@ -35,6 +35,7 @@ def getMessage():
    
 def handle_text(message):
     if message.text == "Фильм":
+        bot.send_message(message.chat.id, '51651')
         lines = []
         soup = BeautifulSoup(html, 'html.parser')
         for s in soup.find_all('div', class_='detail_content'):
@@ -48,7 +49,7 @@ def handle_text(message):
                         a = p.text[11:-5]
                         lines.append('⏰' + a + '\n' + '------------------' + '\n')
         bot.send_message(message.chat.id, ''.join(lines))
-        bot.send_message(message.chat.id, '51651')
+        
 
 
     
