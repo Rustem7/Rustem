@@ -8,12 +8,7 @@ import os
 bot = telebot.TeleBot(constants.token)
 def parse(html):
 
-    @bot.message_handler(commands=['start', 'help'])
-    def handle_start(m):
-        markup = types.ReplyKeyboardMarkup()
-        markup.row('Фильм')
-        bot.send_message(m.chat.id, 'Привет',reply_markup=markup)
-
+    
     @bot.message_handler(content_types=['text'])
     def handle_text(message):
 
