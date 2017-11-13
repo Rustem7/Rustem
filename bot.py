@@ -56,6 +56,7 @@ class Bot:
         url = "http://www.kino.kz/cinema.asp?cinemaid=50"
         coll = urllib.request.urlopen(url)
         html= coll.read()
+        
 
         lines = []
         soup = BeautifulSoup(html, 'html.parser')
@@ -75,7 +76,7 @@ class Bot:
                         
         
         text = ''.join(lines)   
-        bot.send_message(chat_id=message.chat_id, text=b.text)
+        bot.send_message(chat_id=message.chat_id,''.join(lines) )
         
     
        
