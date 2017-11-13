@@ -5,12 +5,8 @@ import time
 import constants
 import os
 
+
 bot = telebot.TeleBot(constants.token)
-TOKEN = "token"
-PORT = int(os.environ.get('PORT', '5000'))
-updater = Updater(TOKEN)
-
-
 def parse(html):
 
     
@@ -38,6 +34,12 @@ def site(url):
     return coll.read()
 
 def main():
+    
+  
+    TOKEN = "token"
+    PORT = int(os.environ.get('PORT', '5000'))
+    updater = Updater(TOKEN)
+
     parse(site('http://www.kino.kz/cinema.asp?cinemaid=50'))
 if __name__ == '__main__':
     main()
