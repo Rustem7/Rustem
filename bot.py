@@ -46,11 +46,12 @@ class Bot:
         url = "http://www.kino.kz/cinema.asp?cinemaid=50"
         coll = urllib.request.urlopen(url)
         html= coll.read()
+        x=html.text
         response = requests.get(url1)
         rate = response.json()['bpi']['USD']['rate_float']
         
-        text = "Current Bitcoin rate - ${}".format(html)
-        bot.send_message(chat_id=message.chat_id, text=text)
+        text = "Current Bitcoin rate - "
+        bot.send_message(chat_id=message.chat_id, x)
         
     @staticmethod   
     def handle_start(bot, update):
