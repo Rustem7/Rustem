@@ -21,12 +21,11 @@ def getMessage():
 
 @bot.message_handler()
 def start(message):
-    parse(site('http://www.kino.kz/cinema.asp?cinemaid=50'))    
+     
     bot.send_message(message.chat.id, 'Hi') #вот эта часть кода исполняется два или три раза
     
     
 def parse(html):
-
     
     @bot.message_handler(content_types=['text'])
     def handle_text(message):
@@ -53,7 +52,10 @@ def site(url):
 
 
     
-    
+def main():
+    parse(site('http://www.kino.kz/cinema.asp?cinemaid=50'))
+if __name__ == '__main__':
+    main()    
     
     
     
