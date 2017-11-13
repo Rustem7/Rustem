@@ -53,7 +53,8 @@ class Bot:
     @staticmethod   
     def handle_start(bot, update):
         message = update.message
-        coll = urllib.request.urlopen('http://www.kino.kz/cinema.asp?cinemaid=50')
+        url = "http://www.kino.kz/cinema.asp?cinemaid=50"
+        coll = urllib.request.urlopen(url)
         html= coll.read()
 
         lines = []
