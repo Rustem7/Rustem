@@ -40,7 +40,7 @@ def handle_text(message):
         coll = urllib.request.urlopen('http://www.kino.kz/cinema.asp?cinemaid=50')
         html=coll.read
         
-        lines.append(html.text+ 'dsdsd')
+        lines.append('dsdsd'+'jnkn')
         bot.send_message(message.chat.id, ''.join(lines))
         
         soup = BeautifulSoup(html, 'html.parser')
