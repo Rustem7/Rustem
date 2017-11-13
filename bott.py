@@ -7,7 +7,7 @@ import os
 
 
 
-bot = telebot.TeleBot(constants.token)
+bot = telebot.TeleBot(token)
 TOKEN = "token"
 PORT = int(os.environ.get('PORT', '5000'))
 
