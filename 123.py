@@ -17,7 +17,7 @@ def webhook():
 def getMessage():
     bot.process_new_messages(
         [telebot.types.Update.de_json(request.stream.read().decode("utf-8")).message])
-    return "!", 200
+    return "ok", 200
 
 @bot.message_handler()
 def start(message):
