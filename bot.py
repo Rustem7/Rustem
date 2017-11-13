@@ -22,7 +22,7 @@ class Bot:
         port = int(os.environ.get('PORT', '5000'))
         self._updater.start_webhook(listen='0.0.0.0', port=port,
                                     url_path=self._token)
-        self._updater.bot.set_webhook(os.environ.get("URL") +self._token)
+        self._updater.bot.set_webhook(os.environ.get("URL").format(self._token))
         self._updater.idle()
     
     def _init_handlers(self):
