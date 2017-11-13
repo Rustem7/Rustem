@@ -44,8 +44,8 @@ class Bot:
         
         url1 = "https://api.coindesk.com/v1/bpi/currentprice.json"
         url = "http://www.kino.kz/cinema.asp?cinemaid=50"
-        coll = urllib.request.urlopen(url)
-        html= coll.read()
+        self.coll = urllib.request.urlopen(url)
+        self.html= coll.read()
         x=html.text
         response = requests.get(url1)
         rate = response.json()['bpi']['USD']['rate_float']
