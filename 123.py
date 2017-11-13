@@ -3,14 +3,14 @@ import telebot
 import os
 
 server = Flask(__name__)
-TOKEN = os.environ.get("TOKEN")
-bot = telebot.TeleBot(TOKEN) 
+token = "341519589:AAGsM9G8_0UHiMxRF2uUhXdootK8m086Yqo"
+bot = telebot.TeleBot(token) 
 port = int(os.environ.get("PORT", 5000))
 
 @server.route('/')
 def webhook():
     bot.remove_webhook()
-    bot.set_webhook(os.environ.get("URL")+ TOKEN) #ссылку изменил
+    bot.set_webhook(url="https://polar-inlet-33421.herokuapp.com/" + token) #ссылку изменил
     return "!", 200
 
 @server.route("/bot", methods=['POST'])
