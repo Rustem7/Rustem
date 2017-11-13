@@ -51,7 +51,7 @@ class Bot:
         rate = response.json()['bpi']['USD']['rate_float']
         
         text = "Current Bitcoin rate - "
-        bot.send_message(chat_id=message.chat_id, x)
+        bot.send_message(chat_id=message.chat_id, text=x)
         
     @staticmethod   
     def handle_start(bot, update):
