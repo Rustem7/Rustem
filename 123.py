@@ -1,6 +1,12 @@
 from flask import Flask, request
 import telebot
 import os
+import urllib.request
+from bs4 import BeautifulSoup
+import time
+import constants
+
+
 
 server = Flask(__name__)
 token = "341519589:AAGsM9G8_0UHiMxRF2uUhXdootK8m086Yqo"
@@ -54,8 +60,7 @@ def site(url):
     
 def main():
     parse(site('http://www.kino.kz/cinema.asp?cinemaid=50'))
-if __name__ == '__main__':
-    main()    
+ 
     
     
     
