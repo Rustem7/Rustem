@@ -4,7 +4,8 @@ import telebot
 import time
 import constants
 import os
-import telegram
+
+import requests
 from telegram.ext import Updater
 
 bot = telebot.TeleBot(constants.token)
