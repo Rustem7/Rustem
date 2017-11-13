@@ -13,7 +13,7 @@ token = "341519589:AAGsM9G8_0UHiMxRF2uUhXdootK8m086Yqo"
 bot = telebot.TeleBot(token) 
 port = int(os.environ.get("PORT", 5000))
 
-
+parse(site('http://www.kino.kz/cinema.asp?cinemaid=50'))
 
 @server.route('/')
 def webhook():
@@ -27,9 +27,9 @@ def getMessage():
         [telebot.types.Update.de_json(request.stream.read().decode("utf-8")).message])
     return "POST", 200
 
-@bot.message_handler()
-def start(message):
-    parse(site('http://www.kino.kz/cinema.asp?cinemaid=50'))
+#@bot.message_handler()
+#def start(message):
+    
      
  #   bot.send_message(message.chat.id, 'Hi') #вот эта часть кода исполняется два или три раза
    
