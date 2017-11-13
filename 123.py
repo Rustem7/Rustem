@@ -49,20 +49,7 @@ def handle_text(message):
                         lines.append('⏰' + a + '\n' + '------------------' + '\n')
         bot.send_message(message.chat.id, ''.join(lines))
 
-def site(url):
-    coll = urllib.request.urlopen(url)
-    time.sleep(2)
-    return coll.read()
 
-
-    
-    
-    
-    
-    
-    
-    
-    
     
     
     
