@@ -13,7 +13,7 @@ token = "341519589:AAGsM9G8_0UHiMxRF2uUhXdootK8m086Yqo"
 bot = telebot.TeleBot(token) 
 port = int(os.environ.get("PORT", 5000))
 
-parse(site('http://www.kino.kz/cinema.asp?cinemaid=50'))
+#parse(site('http://www.kino.kz/cinema.asp?cinemaid=50'))
 
 @server.route('/')
 def webhook():
@@ -62,7 +62,10 @@ def site(url):
 
     
     
-    
+   
+if __name__ == '__main__':
+    parse(site('http://www.kino.kz/cinema.asp?cinemaid=50'))
+
     
     
     
