@@ -4,12 +4,23 @@ import telebot
 import time
 import constants
 import os
-
+from telegram.ext import Updater
 
 bot = telebot.TeleBot(constants.token)
+TOKEN = constants.token
+PORT = int(os.environ.get('PORT', '5000'))
+updater = Updater(TOKEN)
+
+
+
 def parse(html):
 
-    
+    @bot.message_handler(commands=['start', 'help'])
+    def handle_start(m):
+        markup = types.ReplyKeyboardMarkup()
+        markup.row('Фильм')
+        bot.send_message(m.chat.id, 'Привет',reply_markup=markup)
+
     @bot.message_handler(content_types=['text'])
     def handle_text(message):
 
@@ -34,19 +45,12 @@ def site(url):
     return coll.read()
 
 def main():
-    
-  
-    TOKEN = "token"
-    PORT = int(os.environ.get('PORT', '5000'))
-    updater = Updater(TOKEN)
-
-    parse(site('http://www.kino.kz/cinema.asp?cinemaid=50'))
+    parse(site('http://www.kino.kz/cinema.asp?cinemaid='+constants.krg))
 if __name__ == '__main__':
     main()
+
     updater.start_webhook(listen="0.0.0.0",
-                      port=PORT,
-                      url_path=TOKEN)
+                          port=PORT,
+                          url_path=TOKEN)
     updater.bot.set_webhook("https://polar-inlet-33421.herokuapp.com/" + TOKEN)
     updater.idle()
-
-
