@@ -6,7 +6,7 @@ import constants
 import os
 
 bot = telebot.TeleBot(constants.token)
-TOKEN = "TOKEN"
+TOKEN = "token"
 PORT = int(os.environ.get('PORT', '5000'))
 updater = Updater(TOKEN)
 
