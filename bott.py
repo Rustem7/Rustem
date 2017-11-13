@@ -7,7 +7,7 @@ import os
 
 
 
-updater = telebot.TeleBot(constants.token)
+bot = telebot.TeleBot(constants.token)
 TOKEN = constants.token
 PORT = int(os.environ.get('PORT', '5000'))
 
@@ -46,12 +46,12 @@ def site(url):
     return coll.read()
 
 def main():
-    parse(site('http://www.kino.kz/cinema.asp?cinemaid='+constants.krg))
+    parse(site('http://www.kino.kz/cinema.asp?cinemaid=50'))
 if __name__ == '__main__':
     main()
 
-    updater.start_webhook(listen="0.0.0.0",
+    bot.start_webhook(listen="0.0.0.0",
                           port=PORT,
                           url_path=TOKEN)
-    updater.bot.set_webhook("https://polar-inlet-33421.herokuapp.com/" + TOKEN)
-    updater.idle()
+    bot.bot.set_webhook("https://polar-inlet-33421.herokuapp.com/" + TOKEN)
+    bot.idle()
