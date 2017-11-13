@@ -8,10 +8,10 @@ import os
 import requests
 from telegram.ext import Updater
 
-bot = telebot.TeleBot(constants.token)
+updater = telebot.TeleBot(constants.token)
 TOKEN = constants.token
 PORT = int(os.environ.get('PORT', '5000'))
-updater = Updater(TOKEN)
+
 
 
 
