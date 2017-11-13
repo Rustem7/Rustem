@@ -35,10 +35,12 @@ def getMessage():
    
 def handle_text(message):
     if message.text == "Фильм":
-        bot.send_message(message.chat.id, '51651')
+        
         lines = []
         soup = BeautifulSoup(html, 'html.parser')
+        
         for s in soup.find_all('div', class_='detail_content'):
+            bot.send_message(message.chat.id, s.text)
             for k in s.find_all('tr'):
                 for b in k.find_all('strong'):
                     z = b.text
