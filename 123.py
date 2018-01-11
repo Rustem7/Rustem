@@ -34,6 +34,17 @@ def getMessage():
  #   bot.send_message(message.chat.id, 'Hi') #вот эта часть кода исполняется два или три раза
    
 def parse(html):
+    @bot.message_handler(commands=['start', 'help'])
+    def handle_start(m):
+        markup = telebot.types.ReplyKeyboardMarkup()
+        markup.row('Фильм')
+        bot.send_message(m.chat.id, 'Привет тебя приветсвует Кино Бот',reply_markup=markup)
+
+    
+    
+    
+    
+    
     @bot.message_handler(content_types=['text'])
     def handle_text(message):
 
