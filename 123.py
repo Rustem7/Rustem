@@ -49,14 +49,6 @@ def parse(html):
     def handle_text(message):
         
         
-        
-        print("\n -------")
-        print(datetime.now())
-        print("Сообщение от {0} {1}. (id = {2}) \n Текст = {3}".format(message.from_user.first_name,
-                                                                       message.from_user.last_name,
-                                                                       str(message.from_user.id),
-                                                                       message.text))
-
         if message.text == "Фильм":
             lines = []
             soup = BeautifulSoup(html, 'html.parser')
