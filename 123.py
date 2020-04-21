@@ -38,7 +38,7 @@ def parse(html):
     def handle_start(m):
         markup = telebot.types.ReplyKeyboardMarkup()
         markup.row('Фильм')
-        bot.send_message(m.chat.id, 'Привет тебя приветсвует Кино Бот',reply_markup=markup)
+        bot.send_message(m.chat.id, 'Привет тебя  привет свует Кино Бот',reply_markup=markup)
 
     
     
